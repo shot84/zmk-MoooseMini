@@ -1,20 +1,22 @@
+#include <dt-bindings/zmk/mouse.h>
+#include <behaviors/rgbled_widget.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <behaviors/rgbled_widget.dtsi>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 // Leyer
+
 #define UPPER 1
 #define MID 2
 #define LOWER 3
 #define TACT 4
 
 // Japanese
+
 #define JP_MINUS MINUS        // -
 #define JP_CARET EQUAL        // ^
 #define JP_YEN   INT3         // ¥
@@ -52,7 +54,6 @@
 #define JP_QMARK LS(JP_SLASH) // ?
 #define JP_UNDER LS(JP_BSLH)  // _
 
-
 / {
     macros {
         to_layer_0: to_layer_0 {
@@ -68,74 +69,73 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
         rot_kp: sensor_rotate_kp {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
+
         rot_mkp: sensor_rotate_mkp {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&mkp>, <&mkp>;
         };
-        mouse_scroll: mouse_wheel_scrl{
+
+        mouse_scroll: mouse_wheel_scrl {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
+
             tap-ms = <20>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
             bindings = <
-                &kp C_MUTE                &lt_to_layer_0 1 ESC
-                &mkp LCLK   &mkp RCLK     &lt_to_layer_0 2 ENTER
-                &mkp MCLK   &kp BACKSPACE &lt_to_layer_0 3 SPACE
-                                          &lt_to_layer_0 4 ESC
+&kp C_MUTE  &lt_to_layer_0 1 ESC  &mkp LCLK  &mkp RCLK  &lt_to_layer_0 2 ENTER  &mkp MCLK  &kp BACKSPACE  &lt_to_layer_0 3 SPACE  &lt_to_layer_0 4 ESC
             >;
+
             sensor-bindings = <&mouse_scroll SCRL_DOWN SCRL_UP>;
         };
+
         UPPER {
             bindings = <
-                &kp 1                           &kp ESC
-                &kp LC(LS(TAB))   &kp LC(T)     &kp ENTER
-                &kp LC(W)         &kp LC(TAB)   &kp SPACE
-                                                &none
+&kp 1  &kp ESC  &kp LC(LS(TAB))  &kp LC(TAB)  &kp ENTER  &kp LC(W)  &kp LC(TAB)  &kp SPACE  &none
             >;
+
             sensor-bindings = <&inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
+
         MID {
             bindings = <
-                &kp 2                      &kp ESC
-                &kp LEFT     &kp UP        &kp ENTER
-                &kp DOWN     &kp RIGHT     &kp SPACE
-                                           &none
+&kp 2  &kp LG(LS(N))  &kp LG(A)  &kp LG(C)  &kp ENTER  &kp LG(V)  &kp LC(Q)  &kp SPACE  &none
             >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
+
         LOWER {
             bindings = <
-                &kp 3                            &kp ESC
-                &kp LG(LEFT)     &kp LG(UP)      &kp ENTER
-                &kp LG(DOWN)     &kp LG(RIGHT)   &kp SPACE
-                                                 &none
+&kp 3  &kp ESC  &kp LC(LEFT)  &kp LC(UP)  &kp ENTER  &kp LC(DOWN)  &kp LC(RIGHT)  &kp SPACE  &none
             >;
+
             sensor-bindings = <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
+
         TACT {
             bindings = <
-                &bootloader                     &bt BT_SEL 1
-                &bt BT_CLR_ALL   &bt BT_SEL 4   &bt BT_SEL 2
-                &bt BT_CLR       &bt BT_SEL 5   &bt BT_SEL 3
-                                                &none
+&bootloader  &bt BT_SEL 1  &bt BT_CLR_ALL  &bt BT_SEL 4  &bt BT_SEL 2  &bt BT_CLR  &bt BT_SEL 5  &bt BT_SEL 3  &none
             >;
+
             sensor-bindings = <&mouse_scroll SCRL_DOWN SCRL_UP>;
         };
     };
-
 };
