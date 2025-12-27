@@ -13,10 +13,10 @@ layers:
   '1':
   - '1'
   - {t: ESC, type: held}
-  - Ctl+Sft+TAB
-  - Ctl+TAB
+  - Gui+LEFT BRACKET
+  - Gui+RIGHT BRACKET
   - ENTER
-  - Ctl+W
+  - Gui+W
   - Ctl+TAB
   - SPACE
   - ''
@@ -34,10 +34,10 @@ layers:
   - '3'
   - ESC
   - Ctl+LEFT
-  - Ctl+UP
+  - Ctl+RIGHT
   - ENTER
   - Ctl+DOWN
-  - Ctl+RIGHT
+  - Ctl+UP ARROW
   - {t: SPACE, type: held}
   - ''
   '4':
