@@ -108,7 +108,7 @@
 
         UPPER {
             bindings = <
-&kp 1  &kp ESC  &kp LC(LS(TAB))  &kp LC(TAB)  &kp ENTER  &kp LC(W)  &kp LC(TAB)  &kp SPACE  &none
+&kp 1  &kp ESC  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &kp ENTER  &kp LG(W)  &kp LC(TAB)  &kp SPACE  &none
             >;
 
             sensor-bindings = <&inc_dec_kp LC(LS(TAB)) LC(TAB)>;
@@ -124,7 +124,7 @@
 
         LOWER {
             bindings = <
-&kp 3  &kp ESC  &kp LC(LEFT)  &kp LC(UP)  &kp ENTER  &kp LC(DOWN)  &kp LC(RIGHT)  &kp SPACE  &none
+&kp 3  &kp ESC  &kp LC(LEFT)  &kp LC(RIGHT)  &kp ENTER  &kp LC(DOWN)  &kp LC(UP_ARROW)  &kp SPACE  &none
             >;
 
             sensor-bindings = <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
